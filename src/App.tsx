@@ -58,6 +58,47 @@ function ErrorBoundaryWrapper({ children }: { children: ReactNode }) {
 // ║  Metric Components                                                       ║
 // ╚═══════════════════════════════════════════════════════════════════════════╝
 
+// Semantic tone of a choice, based on its authored deltas:
+// all-positive → 'good' (a like, glows green), all-negative → 'bad' (a dislike,
+// glows red), mixed or empty → 'mixed' (a trade-off, neutral glow).
+type ChoiceTone = 'good' | 'bad' | 'mixed';
+
+function choiceTone(delta: Partial<Metrics>): ChoiceTone {
+  const vals = Object.values(delta).filter((v): v is number => v !== undefined && v !== 0);
+  if (vals.length === 0) return 'mixed';
+  const hasPos = vals.some(v => v > 0);
+  const hasNeg = vals.some(v => v < 0);
+  if (hasPos && !hasNeg) return 'good';
+  if (hasNeg && !hasPos) return 'bad';
+  return 'mixed';
+}
+
+const TONE_GLOW: Record<ChoiceTone, { shadow: string; border: string; pill: string }> = {
+  good: {
+    shadow: '8px 8px 30px rgba(52,211,153,0.35), 0 0 0 1px rgba(52,211,153,0.25)',
+    border: 'border-emerald-400/40',
+    pill: 'bg-emerald-500/30 text-emerald-300 scale-105',
+  },
+  bad: {
+    shadow: '-8px 8px 30px rgba(239,68,68,0.35), 0 0 0 1px rgba(239,68,68,0.25)',
+    border: 'border-red-400/40',
+    pill: 'bg-red-500/30 text-red-300 scale-105',
+  },
+  mixed: {
+    shadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.10)',
+    border: 'border-white/20',
+    pill: 'bg-white/10 text-white/70 scale-105',
+  },
+};
+
+const DEFAULT_SHADOW = '0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)';
+
+const TONE_BUTTON_HOVER: Record<ChoiceTone, string> = {
+  good: 'hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-400',
+  bad: 'hover:bg-red-500/10 hover:border-red-500/30 hover:text-red-400',
+  mixed: 'hover:bg-white/10 hover:border-white/20 hover:text-white/80',
+};
+
 // Bar metric (0-10) — shown as progress bar
 function MetricBar({
   emoji, value, hoverDelta, label,
@@ -99,18 +140,21 @@ function MetricBar({
 
 // Number metric (unlimited) — shown as full formatted integer
 function NumberMetric({
-  emoji, value, hoverDelta, label, suffix = '',
+  emoji, value, hoverDelta, label, suffix = '', lowWarning = false,
 }: {
-  emoji: string; value: number; hoverDelta?: number; label: string; suffix?: string;
+  emoji: string; value: number; hoverDelta?: number; label: string; suffix?: string; lowWarning?: boolean;
 }) {
-  const critical = value < 0 || (label.includes('Подпис') && value < 10);
+  const critical = value < 0 || (lowWarning && value < 10);
   const valueColor = critical ? 'text-red-400' : value > 100000 ? 'text-amber-300' : 'text-white/60';
 
-  const preview = hoverDelta !== undefined ? value + hoverDelta : null;
-  const previewColor = preview !== null && (preview < 0 || (label.includes('Подпис') && preview < 10))
+  // The preview sign and color are derived from the DELTA (like/dislike semantics):
+  // negative change = red like a dislike, positive change = green like a like.
+  const delta = hoverDelta ?? 0;
+  const preview = hoverDelta !== undefined ? value + delta : null;
+  const previewColor = preview !== null && (preview < 0 || delta < 0)
     ? 'text-red-400'
-    : preview !== null && preview > 100000
-    ? 'text-amber-300'
+    : delta > 0
+    ? 'text-emerald-400'
     : 'text-white/30';
 
   return (
@@ -121,7 +165,7 @@ function NumberMetric({
       </span>
       {preview !== null && (
         <span className={`text-xs font-mono shrink-0 ${previewColor}`}>
-          {preview < 0 ? '−' : '+'}{formatNumber(Math.abs(preview - value))}
+          {delta > 0 ? '+' : delta < 0 ? '−' : ''}{formatNumber(Math.abs(delta))}
         </span>
       )}
       <span className="text-xs text-white/15 hidden sm:inline shrink-0 truncate">{label}</span>
@@ -152,6 +196,10 @@ function GameCard({
 
   const leftHint = hoverDir === 'left';
   const rightHint = hoverDir === 'right';
+  const leftTone = choiceTone(card.leftChoice.delta);
+  const rightTone = choiceTone(card.rightChoice.delta);
+  const hintTone = leftHint ? leftTone : rightHint ? rightTone : 'mixed';
+  const glow = TONE_GLOW[hintTone];
 
   return (
     <div
@@ -165,11 +213,7 @@ function GameCard({
         className="relative rounded-3xl p-6 flex flex-col gap-5"
         style={{
           background: 'linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-          boxShadow: leftHint
-            ? '-8px 8px 30px rgba(239,68,68,0.3), 0 0 0 1px rgba(239,68,68,0.2)'
-            : rightHint
-            ? '8px 8px 30px rgba(52,211,153,0.3), 0 0 0 1px rgba(52,211,153,0.2)'
-            : '0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)',
+          boxShadow: leftHint || rightHint ? glow.shadow : DEFAULT_SHADOW,
           minHeight: '300px',
         }}
       >
@@ -194,7 +238,7 @@ function GameCard({
           <div
             className={`text-xs px-3 py-2 rounded-xl transition-all duration-200 text-left max-w-[45%] leading-tight ${
               leftHint
-                ? 'bg-red-500/30 text-red-300 scale-105'
+                ? TONE_GLOW[leftTone].pill
                 : 'bg-white/5 text-white/40'
             }`}
           >
@@ -203,7 +247,7 @@ function GameCard({
           <div
             className={`text-xs px-3 py-2 rounded-xl transition-all duration-200 text-right max-w-[45%] leading-tight ${
               rightHint
-                ? 'bg-emerald-500/30 text-emerald-300 scale-105'
+                ? TONE_GLOW[rightTone].pill
                 : 'bg-white/5 text-white/40'
             }`}
           >
@@ -214,10 +258,10 @@ function GameCard({
 
       {/* Swipe hint borders */}
       {leftHint && (
-        <div className="absolute inset-0 rounded-3xl border-2 border-red-400/40 pointer-events-none" />
+        <div className={`absolute inset-0 rounded-3xl border-2 ${TONE_GLOW[leftTone].border} pointer-events-none`} />
       )}
       {rightHint && (
-        <div className="absolute inset-0 rounded-3xl border-2 border-emerald-400/40 pointer-events-none" />
+        <div className={`absolute inset-0 rounded-3xl border-2 ${TONE_GLOW[rightTone].border} pointer-events-none`} />
       )}
     </div>
   );
@@ -274,7 +318,7 @@ function ResultOverlay({
             .map(([key, val]) => {
 const icons: Record<keyof Metrics, string> = {
   reach: '📡', soul: '🫀', money: '💰', energy: '⚡',
-  followers: '👥', likes: '👍', dislikes: '👎', hype: '🔥',
+  followers: '👥', likes: '❤️', dislikes: '💔', hype: '🔥',
 };
               return (
                 <span
@@ -722,9 +766,7 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
       if (choice.direction === 'left') soundSwipeLeft();
       else soundSwipeRight();
 
-      const result = processChoice(
-        state, choice, currentCard.id, currentCard.characterName
-      );
+      const result = processChoice(state, choice, currentCard);
 
       // Localize the result text
       if (lang !== 'ru') {
@@ -923,7 +965,12 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
       ? currentCard?.leftChoice.delta
       : currentCard?.rightChoice.delta
     : undefined;
-  const hoverDelta = rawHoverDelta ? scaleDelta(rawHoverDelta, state.stage) : undefined;
+  // Scale by the CARD's stage so the preview matches the actual result
+  const hoverDelta = rawHoverDelta ? scaleDelta(rawHoverDelta, currentCard?.stage ?? state.stage) : undefined;
+
+  // Semantic tone of each choice for the click buttons (like/dislike colors)
+  const leftTone = currentCard ? choiceTone(currentCard.leftChoice.delta) : 'mixed';
+  const rightTone = currentCard ? choiceTone(currentCard.rightChoice.delta) : 'mixed';
 
   // ─── Localized choice labels for buttons ─────────────────────────────────
   const localizedCard = currentCard ? localizeCard(currentCard, lang) : null;
@@ -1112,7 +1159,7 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
 
       {/* Number Metrics — right column, full width */}
       <div className="relative z-10 grid grid-cols-5 gap-x-3 gap-y-1 px-4 pb-3">
-        <NumberMetric emoji="👥" label={ui.metricFollowers} value={state.metrics.followers} hoverDelta={hoverDelta?.followers} />
+        <NumberMetric emoji="👥" label={ui.metricFollowers} value={state.metrics.followers} hoverDelta={hoverDelta?.followers} lowWarning />
         <NumberMetric emoji="💰" label={ui.metricMoney} value={state.metrics.money} hoverDelta={hoverDelta?.money} />
         <NumberMetric emoji="👍" label={ui.metricLikes} value={state.metrics.likes} hoverDelta={hoverDelta?.likes} />
         <NumberMetric emoji="👎" label={ui.metricDislikes} value={state.metrics.dislikes} hoverDelta={hoverDelta?.dislikes} />
@@ -1146,7 +1193,7 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
         {currentCard && localizedCard && state.phase === 'playing' && (
           <div className="flex gap-4 mt-6 w-full max-w-sm">
             <button
-              className="flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-white/60 text-sm hover:bg-red-500/10 hover:border-red-500/30 hover:text-red-400 transition-all active:scale-95"
+              className={`flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-white/60 text-sm transition-all active:scale-95 ${TONE_BUTTON_HOVER[leftTone]}`}
               onClick={() => handleChoose(currentCard.leftChoice)}
               onMouseEnter={() => setState(p => ({ ...p, hoverDir: 'left' }))}
               onMouseLeave={() => { if (!mouseRef.current.active) setState(p => ({ ...p, hoverDir: null })); }}
@@ -1154,7 +1201,7 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
               ← {localizedCard.leftChoice.label}
             </button>
             <button
-              className="flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-white/60 text-sm hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-400 transition-all active:scale-95"
+              className={`flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-white/60 text-sm transition-all active:scale-95 ${TONE_BUTTON_HOVER[rightTone]}`}
               onClick={() => handleChoose(currentCard.rightChoice)}
               onMouseEnter={() => setState(p => ({ ...p, hoverDir: 'right' }))}
               onMouseLeave={() => { if (!mouseRef.current.active) setState(p => ({ ...p, hoverDir: null })); }}
