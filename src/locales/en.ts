@@ -217,7 +217,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   sasha_first: {
     cn: 'Sasha',
-    t: 'Hey! I followed you. You write honestly — I like that.\n\nI can bring all my friends. Just say the word. Will you ask me to?',
+    t: 'Hey! I followed you. You write honestly — I like that.\n\nIf you want, I can bring all my friends. One word from you — and they\'re here.',
     ll: '"Thanks, I will"',
     lt: 'Sasha hits like. The first truly warm one.',
     rl: '"Get all your friends to follow"',
@@ -233,7 +233,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   time_management: {
     cn: 'Time',
-    t: 'Content takes 5 hours a day. Friends are calling — you\'ve declined three times already.\n\nOne more evening of work instead of them. Will you decline again?',
+    t: 'Content eats five hours a day. The friends are calling for the third time this week.\n\n"So, you coming?" — laughter and music in the background. "Not today"?',
     ll: 'Go with friends',
     lt: 'Friends matter more. But the feed won\'t wait.',
     rl: 'Stay and work',
@@ -249,7 +249,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   hater_engage: {
     cn: 'Hater',
-    t: '"...I just don\'t get why you do this, when nobody needs it anyway"\n\nWill you simply ignore him?',
+    t: '"...I just don\'t get why you do this, when nobody needs it anyway"\n\nYou could ask "why are you here?" — and maybe hear a human. Or you could stay silent. These usually leave on their own.',
     ll: '"Why are you here?"',
     lt: 'Long pause. Then: "I don\'t know." That\'s honest.',
     rl: 'Ignore',
@@ -257,7 +257,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   small_win: {
     cn: 'Event',
-    t: 'The post got lots of likes — your first small victory.\n\nYou could trade the momentum for fresh content right away. Will you trade the moment for reach?',
+    t: 'The post got lots of likes — your first small victory! 🎉\n\nThe wave hasn\'t settled yet. While it hums, you could already drop the next one.',
     ll: 'Write a gratitude post',
     lt: 'Sincerity. The audience feels it.',
     rl: 'Post more content immediately',
@@ -393,7 +393,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   growth_pressure: {
     cn: 'Metrics',
-    t: 'Growth has slowed. Competitors are passing you. Sponsors are nervous.\n\nYou could squeeze out three posts a day. Or accept the slowdown. Will you accept it?',
+    t: 'Growth has slowed. Competitors are passing you. Sponsors are nervous.\n\nTwo voices inside: "Three posts a day — and you\'ll catch them!" and "You\'re not a machine. Ease off".\n\nWhich one will you listen to? Will you slow down?',
     ll: 'More content',
     lt: 'Three posts a day. Quality drops. So do you.',
     rl: 'Accept the slowdown',
@@ -505,7 +505,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   milestone_10k: {
     cn: 'Achievement',
-    t: 'You\'ve crossed a round number!\n\nYou could aim for the next one right away. Or stop and soak in the moment. Will you stop?',
+    t: 'You\'ve crossed a round number! 🎉\n\nThe phone is melting with congratulations. The feed already whispers about the next number.\n\nOr you could just... not hurry. Today.',
     ll: 'Aim for the next round number',
     lt: 'Ambition. Drive. Forward.',
     rl: 'Enjoy the moment',
@@ -529,7 +529,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   copycat: {
     cn: 'Copy',
-    t: 'Someone copied your format. One to one. Same font, even.\n\nWill you just ignore it?',
+    t: 'Someone copied your format. One to one. Same font, even.\n\nYou could write to him. Or you could remember: imitation is the best compliment. And just walk past.',
     ll: 'Message them',
     lt: 'They apologize. You find common ground.',
     rl: 'Ignore',
@@ -545,7 +545,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   late_night: {
     cn: 'Night',
-    t: '3 AM. An idea that won\'t let go.\n\nWill you sleep on it — and leave it for morning?',
+    t: '3 AM. The idea won\'t let go — buzzing, glowing, pulling you to the screen.\n\nSave it to drafts — and until morning. If you manage to fall asleep after.',
     ll: 'Record now',
     lt: 'Night content has a special magic.',
     rl: 'Go to sleep',
@@ -625,7 +625,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   eternal_path: {
     cn: 'Algorithm (A.)',
-    t: 'Reach is maxed. You\'re everywhere. Every feed sees you.\n\n"How do you feel?" — and you suddenly catch yourself doubting. Do you doubt?',
+    t: 'Reach is maxed. You\'re everywhere. Every feed sees you.\n\n"How do you feel?" Sasha will ask today. And suddenly you have no answer.\n\nWill you say it honestly: "I don\'t know"?',
     ll: '"Great"',
     lt: 'Metrics are green. Sasha hasn\'t written in a while.',
     rl: '"I don\'t know"',
@@ -633,7 +633,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   new_beginning: {
     cn: 'Sasha',
-    t: 'What if we started over? New account. New name. I\'ll follow first. Again.\n\n...but you hesitate. Not ready yet?',
+    t: 'What if we started over? New account. New name. I\'ll follow first. Again.\n\nYou scroll your feed — so much went into it... The honest answer to Sasha: "not yet".',
     ll: '"Let\'s do it"',
     lt: 'Delete the account. Create a new one. Sasha is already here.',
     rl: '"I\'m not ready"',
@@ -649,7 +649,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   mentor_legacy: {
     cn: 'Student',
-    t: 'Remember how you helped me start? Now I have 5000 followers. Thank you.\n\nWill you answer business-style — offer a collab?',
+    t: 'Remember how you helped me start? Now I have 5000 followers. Thank you!\n\nHe grew up. And his audience next to yours looks very profitable.\n\nWill you offer him a collab?',
     ll: '"Proud of you"',
     lt: 'The best result isn\'t numbers. It\'s people.',
     rl: '"Let\'s collab"',
@@ -657,7 +657,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   perspective: {
     cn: 'Perspective',
-    t: 'You look at your path from outside. First post. First like. First hater. Everything led you here.\n\nWill you plan what comes next?',
+    t: 'You look at your path from outside. First post. First like. First hater. Everything led you here.\n\nBehind — history. Ahead — a blank page.\n\nWill you open it right now and start planning?',
     ll: 'Appreciate the journey',
     lt: 'The journey matters more than the result.',
     rl: 'Plan the future',
@@ -665,7 +665,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   real_life_moment: {
     cn: 'Moment',
-    t: 'A beautiful sunset. Phone in hand.\n\nWill you photograph it — for the feed?',
+    t: 'A beautiful sunset. Phone in hand.\n\nYour finger is already crawling toward the camera. The audience loves sunsets — and this one is special.',
     ll: 'Just look',
     lt: 'Some moments are just for you.',
     rl: 'Photograph it',
@@ -681,7 +681,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   creative_block: {
     cn: 'Block',
-    t: 'Nothing comes to mind. Total emptiness. For a week now.\n\nWill you force yourself to work?',
+    t: 'Nothing comes to mind. Total emptiness. For a week now.\n\nDiscipline advises: make something. Anything. Any "something" beats "nothing".',
     ll: 'Accept the pause',
     lt: 'Pause is also part of the process.',
     rl: 'Force yourself',
