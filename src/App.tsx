@@ -1006,6 +1006,9 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
   // Scale by the CARD's stage so the preview matches the actual result
   const hoverDelta = rawHoverDelta ? scaleDelta(rawHoverDelta, currentCard?.stage ?? state.stage) : undefined;
 
+  // Localized choice labels for the desktop click buttons
+  const localizedCard = currentCard ? localizeCard(currentCard, lang) : null;
+
   // ─── Render phases ───────────────────────────────────────────────────────
 
   if (state.phase === 'start') {
@@ -1225,24 +1228,24 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
           </div>
         )}
 
-        {/* Click buttons — constant agree (green ✓) / disagree (red ✕) */}
-        {currentCard && state.phase === 'playing' && (
+        {/* Click buttons — per-card choice labels; left = refuse (red ✕), right = agree (green ✓) */}
+        {currentCard && localizedCard && state.phase === 'playing' && (
           <div className="game-choices flex gap-3 sm:gap-4 mt-5 w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl">
             <button
-              className={`game-choices-btn flex-1 py-3.5 rounded-2xl border text-sm sm:text-base font-bold transition-all active:scale-95 ${DISAGREE_STYLE.button}`}
+              className={`game-choices-btn flex-1 py-3.5 px-3 rounded-2xl border text-xs sm:text-sm font-semibold leading-tight transition-all active:scale-95 ${DISAGREE_STYLE.button}`}
               onClick={() => triggerChoice('left')}
               onMouseEnter={() => setState(p => ({ ...p, hoverDir: 'left' }))}
               onMouseLeave={() => { if (!mouseRef.current.active) setState(p => ({ ...p, hoverDir: null })); }}
             >
-              ✕ {ui.disagree}
+              ← ✕ {localizedCard.leftChoice.label}
             </button>
             <button
-              className={`game-choices-btn flex-1 py-3.5 rounded-2xl border text-sm sm:text-base font-bold transition-all active:scale-95 ${AGREE_STYLE.button}`}
+              className={`game-choices-btn flex-1 py-3.5 px-3 rounded-2xl border text-xs sm:text-sm font-semibold leading-tight transition-all active:scale-95 ${AGREE_STYLE.button}`}
               onClick={() => triggerChoice('right')}
               onMouseEnter={() => setState(p => ({ ...p, hoverDir: 'right' }))}
               onMouseLeave={() => { if (!mouseRef.current.active) setState(p => ({ ...p, hoverDir: null })); }}
             >
-              {ui.agree} ✓
+              {localizedCard.rightChoice.label} ✓ →
             </button>
           </div>
         )}
