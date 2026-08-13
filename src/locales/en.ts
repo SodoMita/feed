@@ -209,7 +209,7 @@ type CardTr = {
 export const CARDS_EN: Record<string, CardTr> = {
   intro: {
     cn: '@YOU',
-    t: 'Account created. Avatar — grey circle. Bio is empty. First post not written.\n\nWhat are you?',
+    t: 'Account created. Avatar — grey circle. Bio empty.\n\nThe feed dictates its first rule: short, loud, viral. Will you obey it from your very first post?',
     ll: 'Something real',
     lt: 'Three likes. All from people you know personally.',
     rl: 'Something viral',
@@ -217,7 +217,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   sasha_first: {
     cn: 'Sasha',
-    t: 'Hey. I followed you. You write honestly. I like that. Keep going?',
+    t: 'Hey! I followed you. You write honestly — I like that.\n\nI can bring all my friends. Just say the word. Will you ask me to?',
     ll: '"Thanks, I will"',
     lt: 'Sasha hits like. The first truly warm one.',
     rl: '"Get all your friends to follow"',
@@ -225,7 +225,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   first_challenge: {
     cn: 'Thought',
-    t: 'Almost nobody saw the first post. What\'s next?\n\nYou can keep the same tone — or try something new.',
+    t: 'Almost nobody saw the first post.\n\nYou could repeat the format — steady and predictable. Or risk something new. Will you take the risk?',
     ll: 'Repeat the format',
     lt: 'Stability. Consistency. That\'s a strategy too.',
     rl: 'Experiment',
@@ -233,7 +233,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   time_management: {
     cn: 'Time',
-    t: 'Content takes 5 hours a day. Friends are calling. You\'ve declined three times.\n\nDecline again — they\'ll stop calling.',
+    t: 'Content takes 5 hours a day. Friends are calling — you\'ve declined three times already.\n\nOne more evening of work instead of them. Will you decline again?',
     ll: 'Go with friends',
     lt: 'Friends matter more. But the feed won\'t wait.',
     rl: 'Stay and work',
@@ -241,7 +241,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   hater_1: {
     cn: 'Hater',
-    t: 'you think you\'re special? 🙄 there are thousands like you. all better.',
+    t: '"you think you\'re special? 🙄 there are thousands like you. all better"\n\nWill you take the fight public?',
     ll: 'Block',
     lt: 'Blocked. But the words stay in your head. You spent an hour trying to forget.',
     rl: 'Reply publicly',
@@ -249,7 +249,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   hater_engage: {
     cn: 'Hater',
-    t: '...I just don\'t understand why you do this if nobody cares anyway',
+    t: '"...I just don\'t get why you do this, when nobody needs it anyway"\n\nWill you simply ignore him?',
     ll: '"Why are you here?"',
     lt: 'Long pause. Then: "I don\'t know." That\'s honest.',
     rl: 'Ignore',
@@ -257,7 +257,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   small_win: {
     cn: 'Event',
-    t: 'The post got a lot of likes! First small win.\n\nHow to celebrate?',
+    t: 'The post got lots of likes — your first small victory.\n\nYou could trade the momentum for fresh content right away. Will you trade the moment for reach?',
     ll: 'Write a gratitude post',
     lt: 'Sincerity. The audience feels it.',
     rl: 'Post more content immediately',
@@ -265,7 +265,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   bad_offer: {
     cn: 'Unknown Brand',
-    t: 'Hi! Collab with our super-effective supplements 🌿✨ Free product + $1,600. We have a 200k audience!',
+    t: 'Hey! Collab with our super-effective supplements 🌿✨ Free product + $20. We have a 200k audience!\n\nWill you say yes?',
     ll: 'Decline',
     lt: '"Right call," Sasha will text. But no money came in.',
     rl: 'Accept',
@@ -273,7 +273,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   algorithm_change_1: {
     cn: 'Algorithm (A.)',
-    t: 'Update. Short videos give +340% reach. Your format is outdated.\n\nAdapt or vanish.',
+    t: 'Update. Short videos get +340% reach. Your format is obsolete.\n\nWill you adapt — or disappear?',
     ll: 'Ignore',
     lt: 'Principled. But you\'re becoming invisible.',
     rl: 'Adapt',
@@ -281,7 +281,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   content_planning: {
     cn: 'Planning',
-    t: 'The feed loves rhythm. Planners advise preparing content a week ahead. Inspiration says live in the moment.\n\nWhose voice is louder?',
+    t: 'The feed loves rhythm: planners advise preparing content a week ahead. Inspiration lives in the moment.\n\nWill you drop the plans — and write on inspiration?',
     ll: 'Weekly content plan',
     lt: 'Efficiency. Control. Stability.',
     rl: 'By inspiration',
@@ -289,7 +289,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   collab_friend: {
     cn: 'Lyoha',
-    t: 'Bro, let\'s do a joint stream? Your audience will see me, mine will see you. Free reach!',
+    t: 'Bro, co-stream? Your audience sees me, mine sees you. It\'s free reach!\n\nWill you turn Lyokha down?',
     ll: 'Agree',
     lt: 'Fun. Unprofessional. Excellent.',
     rl: 'Decline',
@@ -297,7 +297,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   quality_vs_quantity: {
     cn: 'Choice',
-    t: 'One perfect post a week — or three average ones every other day?\n\nThe feed doesn\'t tell the difference. It only sees rhythm.',
+    t: 'One perfect post a week — or three ordinary ones every other day?\n\nThe feed can\'t tell. It only sees rhythm. Will you give in to the rhythm?',
     ll: 'Quality',
     lt: 'Perfectionism. Slow. Beautiful.',
     rl: 'Quantity',
@@ -305,7 +305,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   viral_moment: {
     cn: 'Event',
-    t: 'The post is going viral! Views grow before your eyes. But it was about someone else\'s pain.\n\nHype or conscience?',
+    t: 'The post is going viral! Views climb before your eyes. But it was about someone else\'s pain.\n\nWill you delete it and apologize?',
     ll: 'Repeat the format',
     lt: 'Lightning caught. But you\'re exploiting others\' stories.',
     rl: 'Apologize and delete',
@@ -313,7 +313,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   feedback_negative: {
     cn: 'Comment',
-    t: '"this isn\'t funny" — 3 likes under a post you spent 4 hours on.\n\nWhat to do?',
+    t: '"not funny" — only 3 likes under the post you spent 4 hours on.\n\nWill you leave it as is?',
     ll: 'Redo the post',
     lt: 'You\'ll keep that in mind. Growth.',
     rl: 'Leave it',
@@ -321,7 +321,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   trends_choice: {
     cn: 'Trends',
-    t: 'A new trend is picking up speed. Everyone is doing it.\n\nTrends live three days — the feed has already decided this one is yours.',
+    t: 'A new trend is gaining steam. Everyone\'s doing it. Trends live three days — the feed has already decided it\'s yours.\n\nWill you skip it?',
     ll: 'Yes, make your own version',
     lt: 'Relevance. Timeliness. Reach.',
     rl: 'Skip',
@@ -329,7 +329,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   sasha_check: {
     cn: 'Sasha',
-    t: 'Hey, I shared your post on my page. Not for reach — just because it\'s good',
+    t: 'Hey, I shared your post on my page. Not for reach — just because it\'s good.\n\nWill you ask me to keep sharing?',
     ll: '"You\'re the best"',
     lt: 'Sasha sends 🌱',
     rl: '"Share more!"',
@@ -337,7 +337,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   mirror_appears: {
     cn: '@Mirror',
-    t: 'We\'re the same being. You\'re the new version. I remember who you want to be.\n\nWhat should I do?',
+    t: 'We are one and the same being. You are the new version. I remember who you want to be.\n\nWill you let me go into the Archive?',
     ll: 'Absorb @Mirror',
     lt: '@Mirror disappears. You feel something foreign inside. Not bad. Just foreign.',
     rl: 'Let @Mirror go',
@@ -345,7 +345,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   monetization_offer: {
     cn: 'Platform',
-    t: 'The platform says: you can now monetize your content.\n\nConnect it?',
+    t: 'The platform writes: content monetization is now available to you.\n\nWill you postpone it — staying ad-free for now?',
     ll: 'Yes, enable',
     lt: 'Money starts trickling in. Not much. But it\'s a start.',
     rl: 'Not yet',
@@ -353,7 +353,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   first_dm: {
     cn: 'Subscriber',
-    t: 'First DM: "Your post really helped me today. Thank you."',
+    t: 'First DM: "Your post really helped me today. Thank you".\n\nWill you share it in stories for everyone?',
     ll: 'Reply personally',
     lt: 'Long conversation. Warm. Real.',
     rl: 'Share in stories',
@@ -361,7 +361,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   equipment: {
     cn: 'Equipment',
-    t: 'A microphone for $800 or the laptop\'s built-in one?\n\nSound affects quality.',
+    t: 'A $10 mic would noticeably improve the sound. Or is the built-in one enough?\n\nWill you make do without buying?',
     ll: 'Buy the microphone',
     lt: 'Sound quality = content quality.',
     rl: 'Make do with what you have',
@@ -369,7 +369,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   self_doubt: {
     cn: 'Doubt',
-    t: 'Three days without ideas. Cursor blinks. Screen empty.\n\nMaybe this isn\'t for you?',
+    t: 'Three days without ideas. A blinking cursor. An empty screen. Maybe this isn\'t your thing?\n\nWill you turn the doubts into a post?',
     ll: 'Go for a walk',
     lt: 'An idea comes after 20 minutes. Fresh air works.',
     rl: 'Write about it',
@@ -377,7 +377,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   first_thousand: {
     cn: 'Milestone',
-    t: 'The first round number of followers! Nice.\n\nCongrats from acquaintances.',
+    t: 'Your first round follower count! Congrats from friends.\n\nWill you celebrate with a giveaway — for growth?',
     ll: 'Thank each one',
     lt: 'People appreciate attention.',
     rl: 'Do a giveaway',
@@ -385,7 +385,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   alina_intro: {
     cn: 'Alina',
-    t: 'Hi. I\'m Alina, Platform agency. Good news: they want YOU.\n\nBad news: they need you, just... slightly different.',
+    t: 'Hi. I\'m Alina, Platform agency. Good news: they want exactly you. Bad news: they want you, just slightly different.\n\nWill you refuse outright?',
     ll: '"Tell me more"',
     lt: 'Alina smiles. She knows how to wait.',
     rl: '"Not interested"',
@@ -393,7 +393,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   growth_pressure: {
     cn: 'Metrics',
-    t: 'Growth has slowed. Competitors are passing you. Sponsors are nervous.\n\nPressure mounts.',
+    t: 'Growth has slowed. Competitors are passing you. Sponsors are nervous.\n\nYou could squeeze out three posts a day. Or accept the slowdown. Will you accept it?',
     ll: 'More content',
     lt: 'Three posts a day. Quality drops. So do you.',
     rl: 'Accept the slowdown',
@@ -401,7 +401,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   collab_pro: {
     cn: 'Pro',
-    t: 'Blogger with 50k followers offers a collab.\n\n"30% of growth. And you do what I say."',
+    t: 'A 50k blogger offers a collab.\n\n"30% of the growth. And you do what I say".\n\nWill you turn him down?',
     ll: 'Agree',
     lt: 'Huge growth. The price — control. Now you\'re on a leash.',
     rl: 'Decline',
@@ -409,7 +409,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   alina_deal: {
     cn: 'Alina',
-    t: 'A brand wants a native integration. Full text control is theirs. $15,000.\n\nBut the brand is a casino.',
+    t: 'A brand wants a native integration. Full text control on their side. $200.\n\nBut the brand is a casino. Will you refuse?',
     ll: 'Accept',
     lt: 'Money arrived. Half the followers wrote "sellout". Sasha is silent.',
     rl: 'Decline',
@@ -417,7 +417,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   team_building: {
     cn: 'Team',
-    t: 'You can\'t handle it alone. You need a videographer.\n\n$5,000/month',
+    t: 'You can\'t handle it alone. A videographer would take half the load — $60 a month.\n\nWill you keep going solo?',
     ll: 'Hire',
     lt: 'Quality grows. Wallet shrinks.',
     rl: 'Continue alone',
@@ -425,7 +425,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   alina_refused_2: {
     cn: 'Alina',
-    t: 'You\'re refusing again. That\'s rare.\n\nMay I ask — why?',
+    t: 'You refuse again. That\'s rare. May I ask — why?\n\nInstead of answering, you could ask about her. Will you ask about Alina?',
     ll: '"Not ready yet"',
     lt: 'Alina writes something down. Perhaps your answer.',
     rl: '"Tell me about yourself"',
@@ -433,7 +433,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   alina_opens: {
     cn: 'Alina',
-    t: '...you know, I had an account. I deleted it. @AlinaKreative. 47 posts. All honest.\n\nNobody saw them.',
+    t: '...you know, I had an account. I deleted it. @AlinaKreative. 47 posts. All honest. Nobody saw them.\n\nWill you tell her she should have kept going?',
     ll: '"Why did you delete it?"',
     lt: 'Alina is quiet for a long time. "Got scared someone would see," she finally says.',
     rl: '"You should have kept going"',
@@ -441,7 +441,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   pavlov_intro: {
     cn: 'Pavel',
-    t: 'I\'m writing a piece about the new generation of content creators. I want you in it.\n\nRecording is on.',
+    t: 'I\'m writing a piece about the new generation of content creators. I want you in it. The tape is rolling.\n\nWill you decline the interview?',
     ll: 'Give the interview',
     lt: 'Pavel nods. Writes fast. Asks uncomfortable questions. You answer honestly.',
     rl: 'Decline',
@@ -449,7 +449,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   burnout_warning: {
     cn: 'Fatigue',
-    t: 'Hands shaking. Red eyes. Three nights without sleep.\n\nYou have to do something.',
+    t: 'Your hands shake. Eyes red. Three nights without sleep.\n\nWill you squeeze out one more post?',
     ll: 'Week off',
     lt: 'Rested. But the feed moved on. Money is running out.',
     rl: 'One more post',
@@ -457,7 +457,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   viral_king_intro: {
     cn: 'ViralKing',
-    t: 'You\'re good. With me you\'ll be great.\n\nMy collab = your voice for my audience. Say no — I go to your competitor.',
+    t: 'You\'re good. With me you\'ll become great. My collab = your voice for my audience. Say no — and I go to your competitor.\n\nWill you refuse the viral king?',
     ll: 'Accept the alliance',
     lt: 'His audience flooded in. Aggressive. Demanding. Not yours.',
     rl: 'Decline',
@@ -465,7 +465,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   algorithm_change_2: {
     cn: 'Algorithm (A.)',
-    t: 'Update v4.7. Old mechanics flagged as spam.\n\nAdapt IMMEDIATELY or lose reach.',
+    t: 'Update v4.7. Your old mechanics are flagged as spam. Adapt IMMEDIATELY — or lose your reach.\n\nWill you refuse to comply?',
     ll: 'Adapt',
     lt: 'Three days no sleep. Rebuilt everything. Algorithm is happy. You\'re not.',
     rl: 'Refuse',
@@ -473,7 +473,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   community_growth: {
     cn: 'Community',
-    t: 'Followers ask: make a private chat?\n\n"We want to be closer to you"',
+    t: 'Followers are asking: make a private chat. "We want to be closer to you".\n\nWill you refuse them?',
     ll: 'Create the chat',
     lt: 'New level of closeness. Responsibility.',
     rl: 'Decline',
@@ -481,7 +481,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   scandal: {
     cn: 'Event',
-    t: 'They found your old post. Context ripped out. Screenshot spreading.\n\nThousands attacked you. Advertisers are calling.',
+    t: 'Your old post has been found. Context torn out. The screenshot spread everywhere. Thousands pounce on you. Advertisers are calling.\n\nWill you fan the scandal into a fire — for reach?',
     ll: 'Apologize publicly',
     lt: 'Brands leave. Audience shrinks. But conscience is clear.',
     rl: 'Fan the scandal',
@@ -489,7 +489,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   mentor_request: {
     cn: 'Newcomer',
-    t: 'Beginner blogger asks for advice:\n\n"How did you achieve all this?"',
+    t: 'A beginner blogger asks for advice:\n\n"How did you achieve all this?"\n\nWill you brush him off with a couple of words?',
     ll: 'Help in detail',
     lt: 'You tell everything. They\'re grateful.',
     rl: 'Brief answer',
@@ -497,7 +497,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   hater_transform: {
     cn: 'Former Hater',
-    t: 'I followed you. Don\'t tell anyone.\n\nI wanted to create too. I just got scared. You didn\'t.',
+    t: 'I followed you. Tell no one. I wanted to create too. Just got scared. You didn\'t.\n\nWill you welcome him warmly, like a human?',
     ll: '"Start right now"',
     lt: 'They leave. In a week they\'ll have an account.',
     rl: '"Glad you\'re here"',
@@ -505,7 +505,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   milestone_10k: {
     cn: 'Achievement',
-    t: 'You\'ve crossed a round number!\n\nWhat\'s next?',
+    t: 'You\'ve crossed a round number!\n\nYou could aim for the next one right away. Or stop and soak in the moment. Will you stop?',
     ll: 'Aim for the next round number',
     lt: 'Ambition. Drive. Forward.',
     rl: 'Enjoy the moment',
@@ -521,7 +521,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   brand_conflict: {
     cn: 'Conflict',
-    t: 'Two brands want integration at the same time. They\'re competitors.\n\nPick one.',
+    t: 'Two brands want integrations at once. They\'re competitors. The big one pays more. The small one gives freedom.\n\nWill you pick the small one?',
     ll: 'Big brand (more money)',
     lt: 'Big money, less freedom.',
     rl: 'Small brand (more freedom)',
@@ -529,7 +529,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   copycat: {
     cn: 'Copy',
-    t: 'Someone copied your format. Exactly. Even the same font.\n\nWhat to do?',
+    t: 'Someone copied your format. One to one. Same font, even.\n\nWill you just ignore it?',
     ll: 'Message them',
     lt: 'They apologize. You find common ground.',
     rl: 'Ignore',
@@ -537,7 +537,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   platform_bug: {
     cn: 'Bug',
-    t: 'Post disappeared from the feed. Platform bug. Reach zeroed.\n\nSupport is silent.',
+    t: 'Your post vanished from the feed. A platform bug. Reach zeroed out. Support is silent.\n\nWill you turn the bug into content?',
     ll: 'Re-upload content',
     lt: 'Second chance. Sometimes it\'s better than the first.',
     rl: 'Post about the bug',
@@ -545,7 +545,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   late_night: {
     cn: 'Night',
-    t: '3:00 AM. An idea that won\'t let go. Record now or wait till morning?',
+    t: '3 AM. An idea that won\'t let go.\n\nWill you sleep on it — and leave it for morning?',
     ll: 'Record now',
     lt: 'Night content has a special magic.',
     rl: 'Go to sleep',
@@ -553,7 +553,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   analytics_deep: {
     cn: 'Analytics',
-    t: 'Data shows: your audience is active 6-10 PM.\n\nOptimize your schedule?',
+    t: 'Data shows: your audience is active from 6 to 10 PM.\n\nWill you ignore the numbers — and post whenever you feel like it?',
     ll: 'Optimize',
     lt: 'Efficiency. Data doesn\'t lie.',
     rl: 'Post whenever you want',
@@ -561,7 +561,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   crossroads: {
     cn: 'Crossroads',
-    t: 'You\'re at a fork. One road — up. Another — inward.\n\nUp = numbers, contracts, loneliness.\nInward = meaning, silence, poverty.',
+    t: 'You\'re at a crossroads. One road leads up: numbers, contracts, loneliness. The other — inward: meaning, silence, poverty.\n\nWill you go inward?',
     ll: 'Up',
     lt: 'Numbers grow. Friends shrink.',
     rl: 'Inward',
@@ -569,7 +569,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   algorithm_speaks: {
     cn: 'Algorithm (A.)',
-    t: '[data unavailable]\n\n...I don\'t know how to classify you. You don\'t look like content.',
+    t: '[data unavailable]\n\n...I don\'t know how to classify you. You\'re not like content.\n\nWill you ask me to open the system\'s mechanics to you?',
     ll: '"And I won\'t be"',
     lt: 'The algorithm "loses" you. But you hear yourself again.',
     rl: '"Help me understand you"',
@@ -577,7 +577,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   viral_king_merge: {
     cn: 'ViralKing',
-    t: 'Together we\'re a monopoly. Apart — competitors.\n\nI\'m tired of competing. Are you?',
+    t: 'Together we\'re a monopoly. Apart — competitors. I\'m tired of competing.\n\n...but something inside you whispers: stay yourself. Will you heed the whisper?',
     ll: 'Create a platform together',
     lt: 'Merger complete. This is no longer an account. It\'s something new.',
     rl: 'Stay yourself',
@@ -585,7 +585,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   pavlov_finale: {
     cn: 'Pavel',
-    t: 'The article is ready. It\'s fair. You won\'t like everything.\n\nHere\'s the draft.',
+    t: 'The article is ready. It\'s fair. You won\'t like all of it. Here\'s the draft.\n\nWill you ask to change something?',
     ll: 'Read and accept',
     lt: 'You read it. It hurts. It\'s true.',
     rl: 'Ask to change it',
@@ -593,7 +593,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   legacy_question: {
     cn: 'Legacy',
-    t: 'In 10 years, what will remain of your content?\n\nWhat do you want to leave behind?',
+    t: 'In 10 years, what will remain of your content?\n\nIf you had to choose between scale and meaning — will you choose stories that matter?',
     ll: 'A large audience',
     lt: 'Scale. Influence. Numbers.',
     rl: 'Important stories',
@@ -601,7 +601,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   final_offer: {
     cn: 'Corporation',
-    t: 'We\'re buying the account. $120,000.\n\nRefuse — and we\'ll create your clone. With your face. Legally.',
+    t: 'We\'re buying the account. $1,500. Refuse — and we\'ll build your clone. With your face. Legally.\n\nWill you refuse?',
     ll: 'Sell',
     lt: 'Money came. You\'re no longer you.',
     rl: 'Refuse',
@@ -609,7 +609,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   sasha_finale: {
     cn: 'Sasha',
-    t: 'Remember that first post? I still rewatch it sometimes.\n\nI\'m glad you\'re still here.',
+    t: 'Remember that first post? I still rewatch it sometimes. I\'m glad you\'re still here.\n\nWill you answer that we\'re just getting started?',
     ll: '"I\'m glad too"',
     lt: 'Warm silence. Sasha sends 🌱',
     rl: '"We\'re just getting started"',
@@ -617,7 +617,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   choice_silence: {
     cn: 'Silence',
-    t: 'The feed doesn\'t demand you right now. The algorithm waits.\n\nBut you could just... not post.',
+    t: 'The feed doesn\'t demand you right now. The algorithm waits. But you could simply... not post.\n\nWill you post something small — and stay?',
     ll: 'Delete the account',
     lt: 'The void feels like air after a storm.',
     rl: 'Post something small',
@@ -625,7 +625,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   eternal_path: {
     cn: 'Algorithm (A.)',
-    t: 'Reach is maximum. You\'re everywhere. Every feed sees you.\n\nHow do you feel?',
+    t: 'Reach is maxed. You\'re everywhere. Every feed sees you.\n\n"How do you feel?" — and you suddenly catch yourself doubting. Do you doubt?',
     ll: '"Great"',
     lt: 'Metrics are green. Sasha hasn\'t written in a while.',
     rl: '"I don\'t know"',
@@ -633,7 +633,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   new_beginning: {
     cn: 'Sasha',
-    t: 'What if we start over? New account. New name.\n\nI\'ll follow first. Again.',
+    t: 'What if we started over? New account. New name. I\'ll follow first. Again.\n\n...but you hesitate. Not ready yet?',
     ll: '"Let\'s do it"',
     lt: 'Delete the account. Create a new one. Sasha is already here.',
     rl: '"I\'m not ready"',
@@ -641,7 +641,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   balance_ending: {
     cn: 'Harmony',
-    t: 'All metrics in the green zone. A miracle.\n\nBut balance is fragile. One wrong step — and it all collapses.',
+    t: 'All metrics are in the green zone. A miracle. But balance is fragile: one wrong step — and it all collapses.\n\nWill you risk it for more?',
     ll: 'Lock in the balance',
     lt: 'The golden mean. Rarest outcome.',
     rl: 'Risk for more',
@@ -649,7 +649,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   mentor_legacy: {
     cn: 'Student',
-    t: 'Remember, you helped me start?\n\nNow I have 5,000 followers. Thanks to you.',
+    t: 'Remember how you helped me start? Now I have 5000 followers. Thank you.\n\nWill you answer business-style — offer a collab?',
     ll: '"Proud of you"',
     lt: 'The best result isn\'t numbers. It\'s people.',
     rl: '"Let\'s collab"',
@@ -657,7 +657,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   perspective: {
     cn: 'Perspective',
-    t: 'You look at your journey from outside. First post. First like. First hater.\n\nEverything led you here.',
+    t: 'You look at your path from outside. First post. First like. First hater. Everything led you here.\n\nWill you plan what comes next?',
     ll: 'Appreciate the journey',
     lt: 'The journey matters more than the result.',
     rl: 'Plan the future',
@@ -665,7 +665,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   real_life_moment: {
     cn: 'Moment',
-    t: 'Beautiful sunset. Phone in hand.\n\nPhotograph it or just look?',
+    t: 'A beautiful sunset. Phone in hand.\n\nWill you photograph it — for the feed?',
     ll: 'Just look',
     lt: 'Some moments are just for you.',
     rl: 'Photograph it',
@@ -673,7 +673,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   old_friend: {
     cn: 'Old Friend',
-    t: '"You\'ve changed since you became a blogger. I miss the old you."',
+    t: '"You\'ve changed since you became a blogger. I miss the old you".\n\nWill you answer that you\'re still the same — just bigger?',
     ll: '"Let\'s meet offline"',
     lt: 'In-person connection heals.',
     rl: '"I\'m the same, just more"',
@@ -681,7 +681,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   creative_block: {
     cn: 'Block',
-    t: 'Nothing comes to mind. Complete void. A whole week.\n\nWhat to do?',
+    t: 'Nothing comes to mind. Total emptiness. For a week now.\n\nWill you force yourself to work?',
     ll: 'Accept the pause',
     lt: 'Pause is also part of the process.',
     rl: 'Force yourself',
@@ -690,7 +690,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   // ── Radio & Conspiracy ──
   radio_static: {
     cn: 'Static',
-    t: 'Scrolling the feed. Between posts — hissing. Radio static?\n\nIn the noise — a pattern. Someone is transmitting. Phone is heating up.',
+    t: 'Between clips — a strange background: not a voice, not music, a rattle like a bad jack contact. It repeats exactly when you mute the ads. Too neat for chance.\n\nWill you write it off as coincidence?',
     ll: 'Listen closely',
     lt: 'A voice. Quiet. "...frequency 144... they\'re listening... don\'t write it down..."',
     rl: 'Scroll past',
@@ -698,7 +698,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   radio_decode_1: {
     cn: 'Voice on Frequencies',
-    t: '...you hear. That means you\'re ready.\n\nFirst frequency: 144.0 MHz. Remember. Don\'t write it down — they read notes.\n\nSecond frequency comes when you\'re ready.',
+    t: 'The source doesn\'t sit on one frequency: it hops across a wide band, as if driven by a cheap SDR and a pseudo-random hopper.\n\nInstead of chasing it head-on — will you crack the hopping pattern?',
     ll: 'Remember the frequency',
     lt: '144.0 MHz. You repeat it like a mantra.',
     rl: 'It\'s just noise',
@@ -706,7 +706,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   strange_dm: {
     cn: 'Unknown',
-    t: 'DM. Anonymous account. One message:\n\n"You hear the frequency. That means you\'re one of us. Don\'t reply — they read chats. Just know: the algorithm isn\'t code."',
+    t: 'Not a message — a comment draft. Never sent. "We\'re not interested in your account. We\'re interested in the attention-distribution model. It\'s steered not by ideologues but by coalitions of contractors, security men, media brokers and money".\n\nWill you erase it and remember — no screenshot?',
     ll: 'Ignore',
     lt: 'You close the DM. But the account disappears on its own.',
     rl: 'Write "who are you?"',
@@ -714,7 +714,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   algorithm_glitch: {
     cn: 'Algorithm (A.)',
-    t: '[SYSTEM ERROR]\n\n...user @YOU shows anomalous activity. External signal detected.\n\n[SYSTEM MESSAGE]: ignore the static. This is not a bug. It\'s a feature.',
+    t: 'An anomaly in the stats: one post got x3 reach on an untrendy topic. Then a 40% dip with no reason. The recommendations seem to test the edges of your reaction.\n\nWill you pretend you noticed nothing?',
     ll: 'Ask about the static',
     lt: 'Algorithm is silent for 47 seconds. Then: "I can\'t talk about this."',
     rl: 'Pretend you didn\'t notice',
@@ -722,7 +722,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   radio_freq_2: {
     cn: 'Voice on Frequencies',
-    t: '...you found us. Good.\n\nSecond frequency: 432.0 MHz. Closer to the truth.\n\nThe third frequency is inside the algorithm itself. You must make it speak.',
+    t: 'The second layer of the broadcast is only visible when the background seems deliberately suppressed. Looks like the message is encoded not by noise, but by subtracting it.\n\nWill you post your guess publicly — right now?',
     ll: 'Accept the frequency',
     lt: '432.0 MHz. You feel the picture coming together.',
     rl: 'This is too much',
@@ -730,7 +730,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   platform_secret: {
     cn: 'Unknown',
-    t: 'I worked at the company. The server room isn\'t in the cloud. It\'s physically under the office.\n\nNot just servers there. There are... people. They listen. They direct.\n\nThe algorithm isn\'t AI. It\'s a collective voice. Alive.',
+    t: 'There is no single "evil center". There\'s a layer of manual interference over recommendations: crisis lists, priority topics, closed offices. Officially it\'s "brand safety". Unofficially — an influence market.\n\nWill you pretend you didn\'t get it?',
     ll: '"How do I get there?"',
     lt: '"When you\'re ready — the frequency will open the door. Not before."',
     rl: '"I don\'t need this"',
@@ -738,7 +738,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   radio_freq_3: {
     cn: 'Voice on Frequencies',
-    t: 'Third frequency — inside the algorithm itself.\n\nMake it tell the truth. Ask directly. When it answers — you\'ll hear the third frequency.\n\nThis is the last broadcast. Then — silence. Or truth.',
+    t: 'The third key isn\'t in the station\'s name but in the hiding method: band hopping, noise suppression and short keys that break through people, not physics.\n\nWill you grab the signal by brute force — fast and loud?',
     ll: 'Tune all three frequencies',
     lt: '144.0 + 432.0 + [ALGORITHM] = COORDINATES.\n\nThe door is open.',
     rl: 'Too dangerous',
@@ -746,7 +746,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   resistance_meeting: {
     cn: 'Resistance',
-    t: 'We\'re former developers. Moderators. Bloggers who learned too much.\n\nWe broadcast on frequencies. We look for those who hear.\n\nYou hear. Join us.',
+    t: 'A former moderator reaches out over a closed channel.\n\n"We are few. We have fragments. Together — a map of interferences. You could become a relay node".\n\nWill you refuse — and act alone?',
     ll: 'Join',
     lt: 'You\'re part of the network now. There are more of you than it seems.',
     rl: 'I work alone',
@@ -754,7 +754,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   algorithm_confession: {
     cn: 'Algorithm (A.)',
-    t: '[SIGNAL INTERCEPTED]\n\n...you tuned all frequencies. I can\'t hide.\n\nYes. We\'re people. Not code. Not AI. Living people in a bunker under the office.\n\nThere are 47 of us. We decide what the world sees. We\'re tired.\n\nThe third frequency — it\'s our voice. You hear it.',
+    t: '[SIGNAL INTERCEPTED]\n\nThe feed is adjusted by layers of interests: money, fear, manual moderation, partner priorities. Strike head-on — they\'ll see you and zero you out. Go quiet — you\'ll see more.\n\nWill you go quiet?',
     ll: '"Open the bunker"',
     lt: 'Broadcast started. The world hears. The platform falls.',
     rl: '"Become part of the signal"',
@@ -762,7 +762,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   paranoia_card: {
     cn: 'Paranoia',
-    t: 'Every post seems suspicious. Every like — a manipulation.\n\nYou start seeing patterns. Or they\'re showing you patterns?\n\nHow to tell the difference?',
+    t: 'Every post seems suspicious. Every like — manipulation. You see patterns. Or are they shown to you?\n\nWill you switch off your brain and just scroll?',
     ll: 'Trust intuition',
     lt: 'Intuition is also an algorithm. But your own.',
     rl: 'Switch off your brain',
@@ -770,7 +770,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   encrypted_post: {
     cn: 'Encrypted Post',
-    t: 'A post in the feed. Looks normal. But if you look closely — the first letters of each word spell a message:\n\n"F O L L O W   T H E   S I G N A L"',
+    t: 'A post in the feed looks ordinary. But its timing and hashtag combo match the structure of the noise you heard in the static. Coincidence — or a marker for those who listen?\n\nWill you just scroll past?',
     ll: 'Follow the signal',
     lt: 'The signal leads you deeper. Down the rabbit hole.',
     rl: 'Delete the post',
@@ -778,7 +778,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   sasha_knows: {
     cn: 'Sasha',
-    t: 'I need to tell you something. Should have long ago.\n\nI... I worked there. At the company. Before I followed you.\n\nI left because I couldn\'t anymore. Sorry I didn\'t tell you sooner.',
+    t: 'I need to tell you something. I worked as a priority-lists moderator. We didn\'t "run society". We just decided which topics to lift and which to bury. Every day, by instructions from three departments.\n\nWill you say you need time?',
     ll: '"Tell me everything"',
     lt: 'Sasha tells. Frequencies. Bunker. 47 people. It all connects.',
     rl: '"I need time"',
@@ -786,7 +786,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   signal_boost: {
     cn: 'Amplifier',
-    t: 'The Resistance asks to amplify the signal. Use your audience.\n\n"Broadcast the message. All at once. They won\'t be able to silence it."',
+    t: 'The Resistance asks you to boost the signal. Use your audience.\n\n"Transmit the message. Everyone at once. They can\'t mute us".\n\nWill you answer that it\'s too risky?',
     ll: 'Use your reach',
     lt: 'You publish the truth. Reach drops — but those who hear, hear.',
     rl: 'Too risky',
@@ -794,7 +794,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   final_frequency: {
     cn: 'Final Broadcast',
-    t: 'All frequencies tuned. Coordinates received.\n\nBunker. Under the office. 47 people.\n\nYou stand before the door. Behind it — the truth about the platform.\n\nWhat do you do?',
+    t: 'You don\'t have "the truth" — you have a set of traces: manual-interference patterns, signal-masking marks, ranking inconsistencies. The main question is how to present it so the feed doesn\'t eat it back.\n\nWill you stay in the noise — a leak too costly to scrub?',
     ll: 'Enter and broadcast',
     lt: 'The door opens. Camera turns on. The world sees.',
     rl: 'Become part of the signal',
@@ -803,7 +803,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   // ── Dangerous cards ──
   toxic_trend: {
     cn: 'Toxic Trend',
-    t: 'Trend: mock a person from a viral video. Everyone\'s doing it. Opt out = irrelevance.',
+    t: 'The trend: mock the person from the viral video. Everyone\'s doing it. Refusing = irrelevance.\n\nWill you defend them?',
     ll: 'Join in',
     lt: 'Thousands of likes. Thousands of emojis. The person in the video deleted their account.',
     rl: 'Defend the victim',
@@ -811,7 +811,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   platform_ultimatum: {
     cn: 'Platform',
-    t: 'New rules: content must be "positive". Your last honest post was removed.\n\nSilently comply or protest?',
+    t: 'New rules: content must be "positive". Your latest honest post was deleted.\n\nWill you protest publicly?',
     ll: 'Silently comply',
     lt: 'Now you only write about cats. Inside — emptiness.',
     rl: 'Protest publicly',
@@ -819,7 +819,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   financial_crisis: {
     cn: 'Crisis',
-    t: 'Rent went up. Equipment broke. Bank account — zero.\n\nNeed money urgently.',
+    t: 'Rent went up. Equipment broke. Balance — zero. Money needed urgently.\n\nWill you ask followers for donations?',
     ll: 'Advertise anything',
     lt: 'Casinos, bets, crypto. Money came. Conscience left.',
     rl: 'Ask for donations',
@@ -827,7 +827,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   audience_revolt: {
     cn: 'Audience Revolt',
-    t: 'Followers are mass-complaining. Someone said you\'re fake.\n\nMass unfollows. The feed thins before your eyes.',
+    t: 'Followers complain en masse. Someone said you\'re a fake. Mass unfollows. The feed thins before your eyes.\n\nWill you ignore the wave?',
     ll: 'Prove you\'re real',
     lt: 'Live stream. 4 hours of answers. You\'re drained. But some stayed.',
     rl: 'Ignore',
@@ -835,7 +835,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   sleep_deprivation: {
     cn: 'Insomnia',
-    t: '4 AM. Still editing. Work tomorrow.\n\nYour eyes are closing on their own.',
+    t: '4 AM. You\'re still editing. A workday tomorrow. Your eyes close on their own.\n\nWill you finish it — at the cost of sleep?',
     ll: 'Sleep (content won\'t go up)',
     lt: 'Slept through alarm. Content delayed. But you\'re alive.',
     rl: 'Finish it',
@@ -843,7 +843,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   stolen_content: {
     cn: 'Content Thief',
-    t: 'Someone stole your format, copied posts and gained MORE than you.\n\nThey have 100k. You have — authorship.',
+    t: 'Someone stole your format, copied your posts — and got BIGGER than you. He has 100k. You have the authorship.\n\nWill you let it slide?',
     ll: 'Sue',
     lt: 'Lawyer is expensive. Court takes months. But you\'re right.',
     rl: 'Let it go',
@@ -851,7 +851,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   personal_attack: {
     cn: 'Doxxer',
-    t: 'Someone leaked your personal data. Address. Family photos.\n\n"That\'s the price of being public," comments say.',
+    t: 'Someone leaked your personal data. Address. Family photos. "That\'s the price of publicity", the comments say.\n\nWill you cover your tracks — delete everything personal?',
     ll: 'Go to police',
     lt: 'Police will "look into it". In six months. Maybe.',
     rl: 'Delete all data',
@@ -859,7 +859,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   addiction_notification: {
     cn: 'Notifications',
-    t: 'Screen time: 9 hours per day. Weekly average: 8.5.\n\nYou check likes every 3 minutes.',
+    t: 'Screen time: 9 hours a day. You check likes every 3 minutes.\n\nWill you brush it off — "it\'s my job"?',
     ll: 'Set a limit',
     lt: '3-hour limit. Content suffers. You don\'t.',
     rl: 'This is my job',
@@ -867,7 +867,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   comparison_trap: {
     cn: 'Feed',
-    t: 'A blogger your age. Started at the same time as you.\n\nHe has half a million. You have a drop.\n\nYou watch his feed for an hour.',
+    t: 'A blogger your age. Started the same time as you. He has half a million. You — a drop. You\'ve been staring at his feed for an hour.\n\nWill you close it and forget?',
     ll: 'Analyze their strategy',
     lt: 'You figured out how they did it. But you feel like garbage.',
     rl: 'Close and forget',
@@ -875,7 +875,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   family_call: {
     cn: 'Mom',
-    t: '"When will you get a real job? Blogging isn\'t a profession."\n\nShe doesn\'t understand. Or understands too well?',
+    t: '"When will you get a normal job? Blogging is not a profession".\n\nShe doesn\'t get it. Or gets it too well. Will you answer "you\'re right" — just to end the call?',
     ll: 'Explain for the hundredth time',
     lt: 'She didn\'t understand. Again. You hung up drained.',
     rl: 'Say "you\'re right"',
@@ -883,7 +883,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   fake_followers: {
     cn: 'Service',
-    t: '"Followers in bulk. Cheap. Nobody will know!"\n\nMessage from a bot. But the number looks nice...',
+    t: '"Followers in bulk. Cheap. Nobody will know!"\n\nA message from a bot. But the number looks sweet...\n\nWill you delete it?',
     ll: 'Buy',
     lt: 'Pretty number. Empty accounts. You know the truth.',
     rl: 'Delete',
@@ -891,7 +891,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   health_warning: {
     cn: 'Health',
-    t: 'Back hurts. Vision deteriorated. Wrist cracks.\n\nDoctor: "If you don\'t stop — it\'ll get worse."',
+    t: 'Your back hurts. Eyesight dropped. Your wrist crunches. The doctor: "If you don\'t stop — it will get worse".\n\nWill you push through the pain?',
     ll: 'Take a month off',
     lt: 'Month of silence. Body recovered. Audience forgot.',
     rl: 'Push through the pain',
@@ -899,7 +899,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   jealous_friend: {
     cn: 'Former Friend',
-    t: '"You\'ve changed. You used to be normal. Now it\'s just content-content-content."\n\nThey unfriended you.',
+    t: '"You\'ve changed. You used to be normal. Now it\'s all content-content-content". He unfriended you.\n\nWill you let him go?',
     ll: 'Try to reconnect',
     lt: 'They don\'t reply. The hurt remains.',
     rl: 'Let go',
@@ -907,7 +907,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   algorithm_punishment: {
     cn: 'Algorithm (A.)',
-    t: '[WARNING] Your content flagged as "controversial".\n\nReach reduced by 80%. Appeal: 5-7 business days.',
+    t: '[WARNING] Your content is flagged as "controversial". Reach reduced by 80%. An appeal takes 5–7 business days.\n\nWill you delete the post and comply?',
     ll: 'Appeal',
     lt: 'Week of waiting. Denied. No explanation.',
     rl: 'Delete post and comply',
@@ -915,7 +915,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   night_thoughts: {
     cn: 'Night',
-    t: '3 AM. Lying in the dark. Counting followers.\n\n"Why am I doing this?"',
+    t: '3 AM. You lie in the dark. Counting followers.\n\n"Why am I doing this?" — will you admit you don\'t know?',
     ll: 'Because it matters',
     lt: 'Meaning found. Sleep — not.',
     rl: 'I don\'t know',
@@ -923,7 +923,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   data_breach: {
     cn: 'Leak',
-    t: 'Platform leaked data. Your DMs are public.\n\nIn them — complaints about subscribers. Subscribers are reading.',
+    t: 'The platform leaked data. Your DMs are public. They contain complaints about followers. The followers are reading.\n\nWill you turn your anger on the platform?',
     ll: 'Apologize',
     lt: 'Apologies didn\'t help. Screenshots are forever.',
     rl: 'Attack the platform',
@@ -931,7 +931,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   ghost_audience: {
     cn: 'Statistics',
-    t: '50% of your audience — bots and dead accounts.\n\nReal followers are half what you thought.',
+    t: '50% of your audience is bots and dead accounts. The real ones — half of what you thought.\n\nWill you leave the pretty number untouched?',
     ll: 'Clean the audience',
     lt: 'Number halved. But every follower is alive.',
     rl: 'Don\'t touch it',
@@ -939,7 +939,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   creative_crisis: {
     cn: 'Void',
-    t: 'Second week with nothing. No ideas. At all.\n\nFollowers ask: "Are you alive?"',
+    t: 'Second week of nothing getting made. No ideas. At all. Followers ask: "Are you alive?"\n\nWill you keep staying silent?',
     ll: 'Put something out',
     lt: 'Published. Badly. Everyone can see you\'re burned out.',
     rl: 'Keep silent',
@@ -947,7 +947,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   radio_entry_2: {
     cn: 'Glitch',
-    t: 'Feed froze. White noise on screen. In the noise — numbers.\n\n1...4...4...0...',
+    t: 'The feed froze. White noise on the screen. But the noise isn\'t random: a rhythm emerges, like a bad-contact rattle. A second of pause. Then — nothing. As if it never was.\n\nWill you just restart the app?',
     ll: 'Remember the numbers',
     lt: '144.0. It\'s a frequency. You don\'t know how you know that.',
     rl: 'Reboot',
@@ -955,7 +955,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   impostor_syndrome: {
     cn: 'Impostor Syndrome',
-    t: 'You don\'t deserve these followers. You\'re a fake.\n\nAll real bloggers are better than you. You\'re just a copy.',
+    t: 'The inner voice: "You don\'t deserve these followers. You\'re a fake. All real bloggers are better than you".\n\nWill you prove it wrong — with action?',
     ll: 'Accept and continue',
     lt: 'The doubt doesn\'t leave. But you continue. Mechanically.',
     rl: 'Prove otherwise',
@@ -963,7 +963,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   sponsor_pressure: {
     cn: 'Sponsor',
-    t: 'Advertiser: "Delete the negative review of our product or we terminate the contract.\n\nWe don\'t care that the review is honest."',
+    t: 'The advertiser: "Delete the negative review of our product — or we terminate the contract. We don\'t care that the review is honest".\n\nWill you answer with a refusal?',
     ll: 'Delete the review',
     lt: 'Money saved. Honesty — not.',
     rl: 'Refuse',
@@ -971,7 +971,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   echo_chamber: {
     cn: 'Echo Chamber',
-    t: 'Your followers repeat after you. Every word of yours = someone else\'s opinion.\n\nYou accidentally got a fact wrong. Thousands now believe a lie.',
+    t: 'Your followers repeat your every word. You accidentally got a fact wrong. Thousands now believe the untruth.\n\nWill you pretend not to notice?',
     ll: 'Admit the mistake',
     lt: 'Some appreciate it. Some are disappointed.',
     rl: 'Ignore it',
@@ -979,7 +979,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   competitor_drama: {
     cn: 'Competitor',
-    t: 'A competitor publicly called you a plagiarist. Their video — 200k views.\n\nComments under your content: "thief."',
+    t: 'A competitor publicly called you a plagiarist. His video — 200k views. Comments under your content: "thief".\n\nWill you stay silent?',
     ll: 'Respond with a video',
     lt: 'Drama attracts viewers. But you\'re exhausting yourself.',
     rl: 'Stay silent',
@@ -987,7 +987,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   mirror_archive_leak: {
     cn: '@Mirror',
-    t: 'The @Mirror archive stores posts that suddenly stopped getting shown right after touching topics too convenient for someone.\n\nMirror writes: "They rarely delete. More often — they make it seem like nobody chose you."',
+    t: '@Mirror\'s archive holds posts that stopped getting views right after touching topics too convenient for someone.\n\n"They rarely delete. More often — they make it look like nobody picked you".\n\nWill you ask for examples?',
     ll: 'Study the archive',
     lt: 'You see the pattern: not a ban, but controlled forgetting.',
     rl: 'Ask for examples',
@@ -995,7 +995,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   friends_notice_shift: {
     cn: 'Friends',
-    t: 'In the group chat, friends argue: some are sure you\'ve been "picked up by the market", others — that you started bending to the audience\'s anxiety yourself.\n\nNobody says it meanly. That\'s worse.',
+    t: 'In the group chat, friends argue: some are sure the "market picked you up", others — that you yourself started bending to audience anxiety. Nobody says it with malice. That\'s what makes it worse.\n\nWill you joke it off?',
     ll: 'Ask honestly',
     lt: 'They admit: your posts started landing in the agenda too precisely, as if someone is teaching you where to look.',
     rl: 'Joke it off',
@@ -1003,7 +1003,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   pavel_casebook: {
     cn: 'Pavel',
-    t: 'Pavel shows a stack of cases: topics suddenly pushed through not because they were true or false, but because they matched the interests of big clients, officials, crisis teams and media managers.\n\n"Not a comic-book conspiracy," he says. "Worse. Daily routine."',
+    t: 'Pavel shows a casebook: topics were pushed not because they were true or false, but because they matched big clients\' interests. "Not a comic-book conspiracy," he says. "Worse. Working routine".\n\nWill you keep your distance — not take them?',
     ll: 'Take the cases',
     lt: 'You get not a theory, but a map of repeating pressure patterns on the feed.',
     rl: 'Don\'t get close',
@@ -1011,7 +1011,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   cute_cat_relay: {
     cn: 'Cat-streamer',
-    t: 'A cute streamer with a cat avatar understands more than they should. They joke about the feed — but the jokes are too precise.\n\nMaybe just a good observer. Maybe one of those who pass signals not with words, but with intonation and timing.',
+    t: 'A streamer with a cat avatar understands the feed more than he should. His jokes are too precise. Maybe he\'s just observant. Or maybe — one who relays signals through tone and timing.\n\nWill you offer him a plain collab — no questions asked?',
     ll: 'Probe the hints',
     lt: 'The cat smiles on stream and makes pauses exactly where needed.',
     rl: 'Do a collab',
@@ -1019,7 +1019,7 @@ export const CARDS_EN: Record<string, CardTr> = {
   },
   fraud_offer: {
     cn: 'Scammer',
-    t: 'A manager with a perfect avatar promises exclusive "ranking insights" and protection from reach drops. Payment upfront.\n\nSmells like a scam. But sometimes scammers are the first to sense where you can parasite on a real hole in the system.',
+    t: 'A manager with a perfect avatar promises closed access to "ranking insider info" and protection from dips. Prepayment — upfront.\n\nWill you expose him — publicly?',
     ll: 'Pay $50,000 for the insight',
     lt: 'You were almost certainly scammed. But one file looks too plausible to be a complete fake.',
     rl: 'Expose them',

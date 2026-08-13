@@ -58,46 +58,26 @@ function ErrorBoundaryWrapper({ children }: { children: ReactNode }) {
 // ║  Metric Components                                                       ║
 // ╚═══════════════════════════════════════════════════════════════════════════╝
 
-// Semantic tone of a choice, based on its authored deltas:
-// all-positive → 'good' (a like, glows green), all-negative → 'bad' (a dislike,
-// glows red), mixed or empty → 'mixed' (a trade-off, neutral glow).
-type ChoiceTone = 'good' | 'bad' | 'mixed';
+// Choice semantics: every card is a proposal.
+// LEFT  = disagree → red ✕ «Нет / No»
+// RIGHT = agree    → green ✓ «Да / Yes»
+const DISAGREE_STYLE = {
+  shadow: '-8px 8px 30px rgba(239,68,68,0.35), 0 0 0 1px rgba(239,68,68,0.25)',
+  border: 'border-red-400/50',
+  pill: 'bg-red-500/20 text-red-300 border border-red-400/40 scale-105',
+  button: 'bg-red-500/10 border-red-500/30 text-red-300 hover:bg-red-500/20 hover:border-red-500/50',
+  stamp: 'border-red-500 text-red-500',
+};
 
-function choiceTone(delta: Partial<Metrics>): ChoiceTone {
-  const vals = Object.values(delta).filter((v): v is number => v !== undefined && v !== 0);
-  if (vals.length === 0) return 'mixed';
-  const hasPos = vals.some(v => v > 0);
-  const hasNeg = vals.some(v => v < 0);
-  if (hasPos && !hasNeg) return 'good';
-  if (hasNeg && !hasPos) return 'bad';
-  return 'mixed';
-}
-
-const TONE_GLOW: Record<ChoiceTone, { shadow: string; border: string; pill: string }> = {
-  good: {
-    shadow: '8px 8px 30px rgba(52,211,153,0.35), 0 0 0 1px rgba(52,211,153,0.25)',
-    border: 'border-emerald-400/40',
-    pill: 'bg-emerald-500/30 text-emerald-300 scale-105',
-  },
-  bad: {
-    shadow: '-8px 8px 30px rgba(239,68,68,0.35), 0 0 0 1px rgba(239,68,68,0.25)',
-    border: 'border-red-400/40',
-    pill: 'bg-red-500/30 text-red-300 scale-105',
-  },
-  mixed: {
-    shadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.10)',
-    border: 'border-white/20',
-    pill: 'bg-white/10 text-white/70 scale-105',
-  },
+const AGREE_STYLE = {
+  shadow: '8px 8px 30px rgba(52,211,153,0.35), 0 0 0 1px rgba(52,211,153,0.25)',
+  border: 'border-emerald-400/50',
+  pill: 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 scale-105',
+  button: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-500/50',
+  stamp: 'border-emerald-500 text-emerald-500',
 };
 
 const DEFAULT_SHADOW = '0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)';
-
-const TONE_BUTTON_HOVER: Record<ChoiceTone, string> = {
-  good: 'hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-400',
-  bad: 'hover:bg-red-500/10 hover:border-red-500/30 hover:text-red-400',
-  mixed: 'hover:bg-white/10 hover:border-white/20 hover:text-white/80',
-};
 
 // Bar metric (0-10) — shown as progress bar
 function MetricBar({
@@ -178,39 +158,55 @@ function NumberMetric({
 // ╚═══════════════════════════════════════════════════════════════════════════╝
 
 function GameCard({
-  card, hoverDir, swipeOffset,
+  card, hoverDir, swipeOffset, exitDir,
 }: {
   card: Card;
   hoverDir: 'left' | 'right' | null;
   swipeOffset: number;
+  exitDir: 'left' | 'right' | null;
 }) {
   const lang = useLang();
   const ui = getUI(lang);
   const lc = localizeCard(card, lang);
 
-  const maxTilt = 12;
-  const maxTranslate = 40;
-  const normalizedOffset = Math.max(-1, Math.min(1, swipeOffset / 100));
+  const maxTilt = 14;
+  const maxTranslate = 64;
+  const normalizedOffset = Math.max(-1, Math.min(1, swipeOffset / 90));
   const tiltAngle = normalizedOffset * maxTilt;
   const translateX = normalizedOffset * maxTranslate;
 
-  const leftHint = hoverDir === 'left';
-  const rightHint = hoverDir === 'right';
-  const leftTone = choiceTone(card.leftChoice.delta);
-  const rightTone = choiceTone(card.rightChoice.delta);
-  const hintTone = leftHint ? leftTone : rightHint ? rightTone : 'mixed';
-  const glow = TONE_GLOW[hintTone];
+  // During a drag the offset direction wins; otherwise fall back to hover
+  const activeDir: 'left' | 'right' | null =
+    swipeOffset < -8 ? 'left' : swipeOffset > 8 ? 'right' : hoverDir;
+  const leftHint = activeDir === 'left';
+  const rightHint = activeDir === 'right';
+  const glow = leftHint ? DISAGREE_STYLE : AGREE_STYLE;
+
+  // Tinder-style stamp intensity follows the drag distance
+  const stampIntensity =
+    swipeOffset !== 0 ? Math.min(1, Math.abs(normalizedOffset)) : activeDir ? 1 : 0;
+
+  // Committed choice → fly off-screen before the result phase mounts
+  const exitTransform =
+    exitDir === 'left'
+      ? 'translateX(-60vw) rotate(-26deg)'
+      : 'translateX(60vw) rotate(26deg)';
 
   return (
     <div
-      className="relative w-full max-w-sm mx-auto select-none will-change-transform"
+      className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mx-auto select-none will-change-transform"
       style={{
-        transform: `rotate(${tiltAngle}deg) translateX(${translateX}px)`,
-        transition: swipeOffset === 0 ? 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' : 'none',
+        transform: exitDir ? exitTransform : `rotate(${tiltAngle}deg) translateX(${translateX}px)`,
+        opacity: exitDir ? 0 : 1,
+        transition: exitDir
+          ? 'transform 0.18s ease-in, opacity 0.18s ease-in'
+          : swipeOffset === 0
+            ? 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
+            : 'none',
       }}
     >
       <div
-        className="relative rounded-3xl p-6 flex flex-col gap-5"
+        className="game-card relative rounded-3xl p-6 sm:p-8 flex flex-col gap-5 sm:gap-6"
         style={{
           background: 'linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
           boxShadow: leftHint || rightHint ? glow.shadow : DEFAULT_SHADOW,
@@ -218,50 +214,67 @@ function GameCard({
         }}
       >
         {/* Character */}
-        <div className="flex items-center gap-3">
-          <div className="text-5xl leading-none">{lc.characterEmoji}</div>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="game-card-emoji text-5xl sm:text-6xl leading-none">{lc.characterEmoji}</div>
           <div>
-            <div className="text-white font-semibold text-sm">{lc.characterName}</div>
-            <div className="text-white/30 text-xs">
+            <div className="text-white font-semibold text-sm sm:text-base">{lc.characterName}</div>
+            <div className="text-white/30 text-xs sm:text-sm">
               {lc.stage === 1 ? ui.stage1 : lc.stage === 2 ? ui.stage2 : ui.stage3}
             </div>
           </div>
         </div>
 
         {/* Card text */}
-        <div className="text-white/90 text-sm leading-relaxed flex-1 whitespace-pre-line">
+        <div className="game-card-text text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed flex-1 whitespace-pre-line">
           {lc.text}
         </div>
 
-        {/* Choice labels */}
+        {/* Agree / disagree labels — green = agree (right), red = disagree (left) */}
         <div className="flex items-center justify-between gap-2">
           <div
-            className={`text-xs px-3 py-2 rounded-xl transition-all duration-200 text-left max-w-[45%] leading-tight ${
-              leftHint
-                ? TONE_GLOW[leftTone].pill
-                : 'bg-white/5 text-white/40'
+            className={`text-xs sm:text-sm font-bold px-3 py-2 rounded-xl transition-all duration-200 leading-tight ${
+              leftHint ? DISAGREE_STYLE.pill : 'bg-red-500/5 text-red-300/40 border border-transparent'
             }`}
           >
-            ← {lc.leftChoice.label}
+            ← ✕ {ui.disagree}
           </div>
           <div
-            className={`text-xs px-3 py-2 rounded-xl transition-all duration-200 text-right max-w-[45%] leading-tight ${
-              rightHint
-                ? TONE_GLOW[rightTone].pill
-                : 'bg-white/5 text-white/40'
+            className={`text-xs sm:text-sm font-bold px-3 py-2 rounded-xl transition-all duration-200 leading-tight ${
+              rightHint ? AGREE_STYLE.pill : 'bg-emerald-500/5 text-emerald-300/40 border border-transparent'
             }`}
           >
-            {lc.rightChoice.label} →
+            {ui.agree} ✓ →
           </div>
         </div>
       </div>
 
-      {/* Swipe hint borders */}
+      {/* Swipe hint border */}
+      {activeDir && (
+        <div className={`absolute inset-0 rounded-3xl border-2 ${glow.border} pointer-events-none`} />
+      )}
+
+      {/* Stamps */}
       {leftHint && (
-        <div className={`absolute inset-0 rounded-3xl border-2 ${TONE_GLOW[leftTone].border} pointer-events-none`} />
+        <div
+          className={`absolute top-4 left-4 sm:top-6 sm:left-6 z-10 px-3 py-1 sm:px-4 sm:py-1.5 border-4 rounded-xl font-black text-2xl sm:text-3xl uppercase tracking-widest pointer-events-none ${DISAGREE_STYLE.stamp}`}
+          style={{
+            opacity: stampIntensity,
+            transform: `rotate(-14deg) scale(${0.85 + 0.15 * stampIntensity})`,
+          }}
+        >
+          {ui.disagree}
+        </div>
       )}
       {rightHint && (
-        <div className={`absolute inset-0 rounded-3xl border-2 ${TONE_GLOW[rightTone].border} pointer-events-none`} />
+        <div
+          className={`absolute top-4 right-4 sm:top-6 sm:right-6 z-10 px-3 py-1 sm:px-4 sm:py-1.5 border-4 rounded-xl font-black text-2xl sm:text-3xl uppercase tracking-widest pointer-events-none ${AGREE_STYLE.stamp}`}
+          style={{
+            opacity: stampIntensity,
+            transform: `rotate(14deg) scale(${0.85 + 0.15 * stampIntensity})`,
+          }}
+        >
+          {ui.agree}
+        </div>
       )}
     </div>
   );
@@ -304,7 +317,7 @@ function ResultOverlay({
 
   return (
     <div
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 backdrop-blur-sm touch-pan-y"
       onClick={onDone}
     >
       <div
@@ -376,7 +389,7 @@ function FeedPanel({
         </button>
       </div>
       <div
-        className="flex-1 overflow-y-auto px-4 pb-6 space-y-2"
+        className="flex-1 overflow-y-auto touch-pan-y px-4 pb-6 space-y-2"
         onClick={e => e.stopPropagation()}
       >
         {sorted.length === 0 && (
@@ -685,6 +698,7 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
   const [state, setState] = useState<GameState>(createInitState);
   const [currentCard, setCurrentCard] = useState<Card | null>(null);
   const [swipeOffset, setSwipeOffset] = useState(0);
+  const [exitDir, setExitDir] = useState<'left' | 'right' | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const [showFeed, setShowFeed] = useState(false);
   const ambientRef = useRef<(() => void) | null>(null);
@@ -803,6 +817,23 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
     [state, currentCard, playRadioSound, lang]
   );
 
+  // Commit a choice: haptic tick + card flies off-screen, then the result mounts.
+  // exitDir doubles as an input lock while the fly-out runs.
+  const triggerChoice = useCallback(
+    (dir: 'left' | 'right') => {
+      if (!currentCard || state.phase !== 'playing' || exitDir) return;
+      const choice = dir === 'left' ? currentCard.leftChoice : currentCard.rightChoice;
+      if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(12);
+      setExitDir(dir);
+      window.setTimeout(() => {
+        setExitDir(null);
+        setSwipeOffset(0);
+        handleChoose(choice);
+      }, 180);
+    },
+    [currentCard, state.phase, exitDir, handleChoose]
+  );
+
   // Result done
   const handleResultDone = useCallback(() => {
     setState(prev => {
@@ -838,19 +869,22 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
   useEffect(() => {
     if (state.phase !== 'playing' || !currentCard) return;
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') handleChoose(currentCard.leftChoice);
-      if (e.key === 'ArrowRight') handleChoose(currentCard.rightChoice);
+      if (e.key === 'ArrowLeft') triggerChoice('left');
+      if (e.key === 'ArrowRight') triggerChoice('right');
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [state.phase, currentCard, handleChoose]);
+  }, [state.phase, currentCard, triggerChoice]);
 
   // ─── Touch/Swipe ─────────────────────────────────────────────────────────
+  // Thresholds kept generous: a flick past VELOCITY_THRESHOLD with enough travel,
+  // or a drag past ACTION_THRESHOLD, commits the choice. Taps are ignored.
 
-  const HINT_THRESHOLD = 2;
-  const ACTION_THRESHOLD = 8;
-  const VELOCITY_THRESHOLD = 0.04;
-  const VERTICAL_CANCEL = 50;
+  const HINT_THRESHOLD = 10;
+  const ACTION_THRESHOLD = 64;
+  const VELOCITY_THRESHOLD = 0.35; // px/ms
+  const MIN_FLICK_TRAVEL = 24;
+  const VERTICAL_CANCEL = 60;
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchRef.current = {
@@ -884,7 +918,7 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
   }, []);
 
   const handleTouchEnd = useCallback((e: React.TouchEvent) => {
-    if (!currentCard || !touchRef.current) return;
+    if (!currentCard || !touchRef.current || exitDir) return;
     const dx = e.changedTouches[0].clientX - touchRef.current.x;
     const dy = Math.abs(e.changedTouches[0].clientY - touchRef.current.y);
     const dt = Date.now() - touchRef.current.t;
@@ -898,16 +932,18 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
       return;
     }
 
-    const actionTriggered = Math.abs(dx) > ACTION_THRESHOLD || velocity > VELOCITY_THRESHOLD;
+    const actionTriggered =
+      Math.abs(dx) > ACTION_THRESHOLD ||
+      (velocity > VELOCITY_THRESHOLD && Math.abs(dx) > MIN_FLICK_TRAVEL);
 
     if (actionTriggered && dx < 0) {
-      handleChoose(currentCard.leftChoice);
+      triggerChoice('left');
     } else if (actionTriggered && dx > 0) {
-      handleChoose(currentCard.rightChoice);
+      triggerChoice('right');
     } else {
       setState(p => ({ ...p, hoverDir: null }));
     }
-  }, [currentCard, handleChoose]);
+  }, [currentCard, exitDir, triggerChoice]);
 
   // ─── Mouse drag ──────────────────────────────────────────────────────────
 
@@ -940,16 +976,18 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
 
     const dx = swipeOffset;
     mouseRef.current.active = false;
-    setSwipeOffset(0);
+
+    if (exitDir) return;
 
     if (dx < -ACTION_THRESHOLD) {
-      handleChoose(currentCard.leftChoice);
+      triggerChoice('left');
     } else if (dx > ACTION_THRESHOLD) {
-      handleChoose(currentCard.rightChoice);
+      triggerChoice('right');
     } else {
+      setSwipeOffset(0);
       setState(p => ({ ...p, hoverDir: null }));
     }
-  }, [currentCard, handleChoose, swipeOffset]);
+  }, [currentCard, exitDir, swipeOffset, triggerChoice]);
 
   // Cleanup ambient on unmount
   useEffect(() => {
@@ -967,13 +1005,6 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
     : undefined;
   // Scale by the CARD's stage so the preview matches the actual result
   const hoverDelta = rawHoverDelta ? scaleDelta(rawHoverDelta, currentCard?.stage ?? state.stage) : undefined;
-
-  // Semantic tone of each choice for the click buttons (like/dislike colors)
-  const leftTone = currentCard ? choiceTone(currentCard.leftChoice.delta) : 'mixed';
-  const rightTone = currentCard ? choiceTone(currentCard.rightChoice.delta) : 'mixed';
-
-  // ─── Localized choice labels for buttons ─────────────────────────────────
-  const localizedCard = currentCard ? localizeCard(currentCard, lang) : null;
 
   // ─── Render phases ───────────────────────────────────────────────────────
 
@@ -1018,7 +1049,8 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
 
   return (
     <div
-      className="min-h-screen bg-[#050510] flex flex-col"
+      className="fixed inset-0 overflow-hidden bg-[#050510] flex flex-col"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       onMouseUp={handleMouseUp}
       onMouseLeave={() => { mouseRef.current.active = false; setSwipeOffset(0); setState(p => ({ ...p, hoverDir: null })); }}
     >
@@ -1030,6 +1062,9 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
             'radial-gradient(ellipse at 20% 50%, rgba(167,139,250,0.04) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(96,165,250,0.04) 0%, transparent 60%)',
         }}
       />
+
+      {/* Everything centered in a readable column so the card scales up on big screens */}
+      <div className="relative z-10 mx-auto w-full max-w-2xl flex-1 min-h-0 flex flex-col">
 
       {/* Header */}
       <header className="relative z-10 px-4 pt-4 pb-2">
@@ -1166,9 +1201,9 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
         <NumberMetric emoji="🔥" label={ui.metricHype} value={state.metrics.hype} hoverDelta={hoverDelta?.hype} />
       </div>
 
-      {/* Card area */}
+      {/* Card area — touch-action: none keeps the page from scrolling while swiping */}
       <main
-        className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 pb-8"
+        className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center px-4 pb-4 touch-none"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -1179,34 +1214,35 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
           <div
             key={state.cardKey}
             className="w-full"
-            style={{ animation: 'fadeInUp 0.35s ease' }}
+            style={{ animation: exitDir ? 'none' : 'fadeInUp 0.35s ease' }}
           >
             <GameCard
               card={currentCard}
               hoverDir={state.hoverDir}
               swipeOffset={swipeOffset}
+              exitDir={exitDir}
             />
           </div>
         )}
 
-        {/* Desktop click buttons */}
-        {currentCard && localizedCard && state.phase === 'playing' && (
-          <div className="flex gap-4 mt-6 w-full max-w-sm">
+        {/* Click buttons — constant agree (green ✓) / disagree (red ✕) */}
+        {currentCard && state.phase === 'playing' && (
+          <div className="game-choices flex gap-3 sm:gap-4 mt-5 w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl">
             <button
-              className={`flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-white/60 text-sm transition-all active:scale-95 ${TONE_BUTTON_HOVER[leftTone]}`}
-              onClick={() => handleChoose(currentCard.leftChoice)}
+              className={`game-choices-btn flex-1 py-3.5 rounded-2xl border text-sm sm:text-base font-bold transition-all active:scale-95 ${DISAGREE_STYLE.button}`}
+              onClick={() => triggerChoice('left')}
               onMouseEnter={() => setState(p => ({ ...p, hoverDir: 'left' }))}
               onMouseLeave={() => { if (!mouseRef.current.active) setState(p => ({ ...p, hoverDir: null })); }}
             >
-              ← {localizedCard.leftChoice.label}
+              ✕ {ui.disagree}
             </button>
             <button
-              className={`flex-1 py-3 rounded-2xl bg-white/5 border border-white/10 text-white/60 text-sm transition-all active:scale-95 ${TONE_BUTTON_HOVER[rightTone]}`}
-              onClick={() => handleChoose(currentCard.rightChoice)}
+              className={`game-choices-btn flex-1 py-3.5 rounded-2xl border text-sm sm:text-base font-bold transition-all active:scale-95 ${AGREE_STYLE.button}`}
+              onClick={() => triggerChoice('right')}
               onMouseEnter={() => setState(p => ({ ...p, hoverDir: 'right' }))}
               onMouseLeave={() => { if (!mouseRef.current.active) setState(p => ({ ...p, hoverDir: null })); }}
             >
-              {localizedCard.rightChoice.label} →
+              {ui.agree} ✓
             </button>
           </div>
         )}
@@ -1225,6 +1261,8 @@ function Game({ onChangeLang }: { onChangeLang: (l: Lang) => void }) {
           </div>
         )}
       </main>
+
+      </div>{/* end centered column */}
 
       {/* Perk toast */}
       {state.newPerk && <PerkToast perkId={state.newPerk} />}

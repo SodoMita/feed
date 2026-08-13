@@ -76,6 +76,9 @@ export type UIStrings = {
   feedTitle: string;
   feedNew: string;
   feedClose: string;
+  // Agree/disagree choice UI: green = agree (✓), red = disagree (✕)
+  agree: string;
+  disagree: string;
 };
 
 const ru: UIStrings = {
@@ -93,7 +96,7 @@ const ru: UIStrings = {
   metricSoulDesc: 'Ты настоящий',
   metricMoneyDesc: 'Ты в деньгах',
   metricEnergyDesc: 'У тебя силы',
-  swipeHint: 'Свайп влево ← и → вправо. Держи все метрики в балансе. Не дай ни одной достичь нуля.',
+  swipeHint: 'Каждая карточка — предложение. Свайп ← влево (красное ✕) — отказаться. Свайп вправо → (зелёное ✓) — согласиться. Держи метрики в балансе.',
   createAccount: '✨ Создать аккаунт',
   newGame: '🔄 Новая игра',
   continueGame: '▶ Продолжить',
@@ -128,6 +131,8 @@ const ru: UIStrings = {
   feedTitle: '📱 Лента',
   feedNew: 'новое',
   feedClose: 'Закрыть',
+  agree: 'Да',
+  disagree: 'Нет',
 };
 
 const en: UIStrings = {
@@ -145,7 +150,7 @@ const en: UIStrings = {
   metricSoulDesc: 'You\'re real',
   metricMoneyDesc: 'You have cash',
   metricEnergyDesc: 'You have strength',
-  swipeHint: 'Swipe ← left and right →. Keep all metrics balanced. Don\'t let any reach zero.',
+  swipeHint: 'Every card is a proposal. Swipe ← left (red ✕) to refuse. Swipe right → (green ✓) to agree. Keep all metrics balanced.',
   createAccount: '✨ Create Account',
   newGame: '🔄 New Game',
   continueGame: '▶ Continue',
@@ -180,6 +185,8 @@ const en: UIStrings = {
   feedTitle: '📱 Feed',
   feedNew: 'new',
   feedClose: 'Close',
+  agree: 'Yes',
+  disagree: 'No',
 };
 
 const UI_STRINGS: Record<Lang, UIStrings> = { ru, en };
