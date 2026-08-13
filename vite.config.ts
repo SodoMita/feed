@@ -16,4 +16,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
+  server: {
+    host: true,
+    // Allow the sandbox preview host (e2b.app) to reach the dev server
+    allowedHosts: true,
+  },
 });

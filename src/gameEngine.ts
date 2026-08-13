@@ -244,14 +244,18 @@ export type ChoiceResult = {
 export function processChoice(
   state: GameState,
   choice: CardChoice,
-  currentCardId: string | null,
-  currentCharName: string | null,
+  card: Card | null,
 ): ChoiceResult {
-  const currentStage = stageForCount(state.cardCount);
+  // Number deltas scale by the CARD's own stage, not by the run's stage,
+  // so the numbers a card promises in its text are always the numbers it delivers.
+  const deltaStage = card?.stage ?? stageForCount(state.cardCount);
 
   // Apply delta with scaling
-  const { metrics: newMetrics, scaledDelta } = applyDelta(state.metrics, choice.delta, currentStage);
+  const { metrics: newMetrics, scaledDelta } = applyDelta(state.metrics, choice.delta, deltaStage);
   const newCardCount = state.cardCount + 1;
+
+  const currentCardId = card?.id ?? null;
+  const currentCharName = card?.characterName ?? null;
 
   // Flags
   const newFlags = [...state.flags];
