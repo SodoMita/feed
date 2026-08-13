@@ -136,9 +136,24 @@ npm install
 # Запуск dev-сервера
 npm run dev
 
-# Сборка
+# Сборка (пишет готовую игру в docs/index.html)
 npm run build
 ```
+
+## 🌍 GitHub Pages и запуск без сервера
+
+Игра собирается в **один самодостаточный файл** — `docs/index.html`
+(все стили и скрипты инлайн, внешних запросов нет):
+
+- **Прямо сейчас:** скачайте репозиторий и откройте `docs/index.html`
+  двойным кликом — игра работает без какого-либо сервера.
+- **GitHub Pages:**
+  1. Зайдите в **Settings → Pages** репозитория
+  2. В «Build and deployment» выберите **Deploy from a branch**
+  3. Branch: **main**, folder: **/docs** → **Save**
+  4. Игра будет доступна по адресу `https://SodoMita.github.io/feed/`
+- **Обновить собранный файл:** `npm run build` (перезаписывает `docs/index.html`),
+  закоммитить и запушить.
 
 ## 🎲 Интересные факты
 
